@@ -1,21 +1,14 @@
 package com.Shin0521;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.Field;
 import java.util.Scanner;
 
 public class Memo {
 
-    public static void main(String args[]){
+    public static void main(String args[]) throws IOException {
         Scanner scan = new Scanner(System.in);
         String input;
-
-
-
-        while (true){
             System.out.println("       메모장");
             System.out.println("==================");
             System.out.println("    1.메모 쓰기");
@@ -27,10 +20,27 @@ public class Memo {
             input = scan.nextLine();
             System.out.println("선택한 번호는 " + input + "번 입니다");
 
-            if (input.equals("1"))
-            {
-                System.out.println("[메모 상세보기]");
+            if (input.equals("1")) {
 
+                String text = "Test Message\r\nOK?";
+
+                System.out.print("파일이름을 입력하시오 : ");
+                String filename = scan.nextLine();
+                FileOutputStream fos = new FileOutputStream(new File("D:/workspace/sch/src/com/notepade/"+filename+".txt"));
+
+                String inputText = "";
+                System.out.println("내용을 입력하세요 : ");
+                while(true) {
+                    inputText = scan.nextLine();
+                    if (inputText.equals("exit")) {
+                        break;
+                    }
+                }
+
+
+               /* fos.write();
+                fos.flush(); //버퍼의 내용을 비우는 역할을 한다.
+                fos.close();*/
 
             }
 
@@ -41,13 +51,9 @@ public class Memo {
             if(input.equals("4"))
             {
                 System.out.println("종료하였습니다");
-                break;
             }
 
         }
-
-
-    }
 
     public void writeFile(String fileName,int numberCount) {
         FileWriter fileWriter=null;
