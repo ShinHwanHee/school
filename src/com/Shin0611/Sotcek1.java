@@ -1,13 +1,10 @@
-package com.network;
-
+package com.Shin0611;
 
 import java.io.*;
-import java.sql.SQLOutput;
-import java.util.Date;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class SocketClientSample {
+public class Sotcek1 {
     static Scanner scanner;
     Socket socket = null;
     BufferedReader in = null;
@@ -16,7 +13,7 @@ public class SocketClientSample {
     InputStream inputStream = null;
 
     public static void main(String[] args){
-        SocketClientSample sample=new SocketClientSample();
+        Sotcek1 sample=new Sotcek1();
         try {
             sample.sendSocketSample();
         } catch (IOException e) {
@@ -28,10 +25,8 @@ public class SocketClientSample {
         while(true){
             System.out.println("문자를 입력하세요");
             String request = scanner.nextLine();
+            if (request.equals("exit")) break;
             sendSocketData(request);
-            if (request.equals("complete")) {
-                break;
-            }
         }
         inputStream.close();
         outputStream.close();
@@ -70,3 +65,4 @@ public class SocketClientSample {
         }
     }
 }
+
